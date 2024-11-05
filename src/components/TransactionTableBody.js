@@ -1,7 +1,8 @@
+import { useState } from "react";
 import TransactionRow from "./TransactionRow";
 
-const transactions = [
-  {
+const TransactionTableBody = () => {
+  const [transactions, setTransaction] = useState([{
     description: "Freelance Payment",
     type: "Expense",
     amount: 282.87,
@@ -66,17 +67,18 @@ const transactions = [
     type: "Income",
     amount: 10000,
     id: "xoViNsn"
-  }
-];
-
-const TransactionTableBody = () => {
+  }]);
+  console.log(transactions)
   const transactionsList = transactions.map(transaction => (
     <TransactionRow
       key={transaction.id}
+      id={transaction.id}
       date={transaction.date}
       description={transaction.description}
       type={transaction.type}
       amount={transaction.amount}
+      transactions={transactions}
+      setTransaction={setTransaction}
     />
   ));
 

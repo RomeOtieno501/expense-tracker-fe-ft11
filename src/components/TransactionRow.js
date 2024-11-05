@@ -1,15 +1,20 @@
-const TransactionRow = (props) => {
+const TransactionRow = ({id, date, description, type, amount, transactions, setTransaction}) => {
+  const handleDelete = () => {
+    const NewTransactions = transactions.filter((transaction)=> transaction.id !== id);
+    setTransaction(NewTransactions);
+  }
+
   
 
   return (
     <tr>
-      <td>{props.date || "Null"}</td>
-      <td>{props.description}</td>
-      <td>{props.type}</td>
-      <td>{props.amount}</td>
+      <td>{date || "Null"}</td>
+      <td>{description}</td>
+      <td>{type}</td>
+      <td>{amount}</td>
       <td>
         <button>Edit</button>
-        <button>Delete</button>
+        <button onClick={handleDelete}>Delete</button>
       </td>
     </tr>
   );
